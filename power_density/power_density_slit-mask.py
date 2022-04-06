@@ -59,7 +59,8 @@ class SlitMask:
     Notes
     -----
     - Tested for h5 files created by saving the 2D plot of any power density
-      plot of XOPPY widgets
+      plot of XOPPY widgets, please note that the power density has to be in
+      W/mm2 units
 
     Examples
     --------
