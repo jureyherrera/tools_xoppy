@@ -63,11 +63,7 @@ class SlitMask:
 
     Examples
     --------
-    >>> mask_test = SlitMask('pow_dens_map_test.h5', 'square', 2.5, 1.5)
-    
-    in case of a circular aperture:
-    
-    >>> mask_test = SlitMask('pow_dens_map_test.h5', 'circle', 2.5)
+    >>> mask_test = SlitMask('pow_dens_map_test.h5','square',2.5,1.5)
 
     >>> mast_test.abs_plot(save_fig=True)
     Plots the absorbed power in the mask and saves the plot
@@ -213,6 +209,8 @@ class SlitMask:
         total_power = round((a_data.sum() * (abs(x[1] - x[0])) * \
                              abs((y[1] - y[0]))) / 1000, 3)
         peak_power = round(a_data.max(), 2)
+        plt.ion()
+        plt.figure()
         plt.pcolormesh(x, y, a_data, cmap=plt.cm.viridis, shading='auto')	
         plt.colorbar().ax.tick_params(axis='y', labelsize=f_size)	
         plt.title("Total Power = {} kW, Power Density Peak = {} W/mm$^2$".format(\
@@ -223,9 +221,8 @@ class SlitMask:
         plt.yticks(fontsize=f_size)
         plt.xlim(x[0], x[-1])
         plt.ylim(y[0], y[-1])
-        #plt.axis('equal')        
+        #plt.axis('equal')   
         
-
         if save_fig:
             
             save_name = "abs_"+self.source_file[:-3]+".png"
@@ -281,6 +278,8 @@ class SlitMask:
         total_power = round((t_data.sum() * (abs(x[1] - x[0])) * \
                              abs((y[1] - y[0]))) / 1000, 3)
         peak_power = round(t_data.max(), 2)
+        plt.ion()
+        plt.figure()
         plt.pcolormesh(x, y, t_data, cmap=plt.cm.viridis, shading='auto')	
         plt.colorbar().ax.tick_params(axis='y', labelsize=f_size)	
         plt.title("Total Power = {} kW, Power Density Peak = {} W/mm$^2$".format(\
@@ -299,8 +298,7 @@ class SlitMask:
             plt.savefig(images_dir + save_name, dpi=300, bbox_inches='tight',
                        format='png')
             print("Figure {} has been saved in the folder {}".format(\
-                  save_name, images_dir))
-
+                  save_name, images_dir))        
         plt.show()
         
         #return t_data
