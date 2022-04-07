@@ -64,7 +64,7 @@ class SlitMask:
 
     Examples
     --------
-    >>> mask_test = SlitMask('pow_dens_map_test.h5','square',2.5,1.5)
+    >>> mask_test = SlitMask('pow_dens_map_test.h5', 'square', 2.5, 1.5)
 
     >>> mast_test.abs_plot(save_fig=True)
     Plots the absorbed power in the mask and saves the plot
