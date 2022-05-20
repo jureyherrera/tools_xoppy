@@ -35,11 +35,11 @@ class SlitMask:
     source_file : str
         Name of the h5 with the 2D power density data
     kind : str
-        Kind of the slit, can be 'rectangular' or 'circle'
+        Kind of the slit, can be 'rectangular' or 'circular'
     hor : float or int
-        Horzontal aperture in mm (if circle is the diameter)
+        Horzontal aperture in mm (if circular is the diameter)
     ver : float, int or None
-        Vertical aperture in mm (if circle, it is not necessary)
+        Vertical aperture in mm (if circular, it is not necessary)
 
     Methods
     -------
@@ -80,7 +80,7 @@ class SlitMask:
         source_file : str
             Name of the h5 source file (e. g. 'pow_dens_map_test.h5')
         kind : str
-            Kind of the slit, can be 'rectangular' or 'circle'
+            Kind of the slit, can be 'rectangular' or 'circular'
         hor : float or int
             Horzontal aperture in mm (if is circular is the diameter)
         ver : float, int or None
@@ -88,10 +88,10 @@ class SlitMask:
         """ 
         self.source_file = source_file
                 
-        if kind in ['rectangular', 'circle']:
+        if kind in ['rectangular', 'circular']:
             self.kind = kind
         else:
-            raise RuntimeError("ERROR: please indicate 'rectangular' or 'circle'")
+            raise RuntimeError("ERROR: please indicate 'rectangular' or 'circular'")
 
         if type(hor) is float or int:
             self.hor = float(hor)
@@ -188,7 +188,7 @@ class SlitMask:
 
             a_data[v_min:v_max, h_min:h_max] = 0
 
-        elif self.kind == 'circle':
+        elif self.kind == 'circular':
             
             xr, yr = np.meshgrid(x, y)
             cmask = np.sqrt((xr)**2 + (yr)**2)
@@ -204,7 +204,7 @@ class SlitMask:
             a_data = np.multiply(a_data, cmask)
         
         else:
-            raise RuntimeError("ERROR: please indicate 'rectangular' or 'circle'")
+            raise RuntimeError("ERROR: please indicate 'rectangular' or 'circular'")
         
         plt.ion()
         total_power = round((a_data.sum() * (abs(x[1] - x[0])) * \
@@ -263,7 +263,7 @@ class SlitMask:
             else:
                 pass
 
-        elif self.kind == 'circle':
+        elif self.kind == 'circular':
 
             xr, yr = np.meshgrid(x, y)
             cmask = np.sqrt((xr)**2 + (yr)**2)
