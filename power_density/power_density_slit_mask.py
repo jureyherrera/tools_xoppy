@@ -132,7 +132,7 @@ class SlitMask:
         coord : ndarray
             points at the given axis	
         """
-        h5_file = h5py.File(f'{script_dir}\{self.source_file}','r')
+        h5_file = h5py.File(f'{script_dir}/{self.source_file}','r')
         
         if axis == 'x':
             coord = np.array(h5_file['/entry/data0/x'])
