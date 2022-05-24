@@ -149,7 +149,7 @@ class SlitMask:
         A 2D matrix with the power density distribution
         data : ndarray
         """
-        h5_file = h5py.File(f'{script_dir}\{self.source_file}','r')
+        h5_file = h5py.File(f'{script_dir}/{self.source_file}','r')
 
         data = np.array(h5_file['/entry/data0/image'])
 
