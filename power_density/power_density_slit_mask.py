@@ -257,7 +257,7 @@ class SlitMask:
                 t_data[:, np.argmax(x >= self.hor/2):] = 0
             else:
                 pass
-            if self.ver <= y[-1]:
+            if self.ver/2 <= y[-1]:
                 t_data[:np.argmin(y <= -self.ver/2) , :] = 0
                 t_data[np.argmax(y >= self.ver/2): , :] = 0
             else:
